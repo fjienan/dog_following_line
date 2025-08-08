@@ -25,7 +25,7 @@ class LineFollower:
         # - L通道(0,100): 低亮度值表示黑色和深灰色
         # - A通道(100,150): 接近中性色，不偏红不偏绿
         # - B通道(100,150): 接近中性色，不偏蓝不偏黄
-        lower_black = np.array([0, 100, 100])
+        lower_black = np.array([0, 110, 110])
         upper_black = np.array([100, 150, 150])
         self.mask = cv2.inRange(self.lab, lower_black, upper_black)
         
@@ -176,7 +176,7 @@ if __name__ == "__main__":
     # 读取图片
     image = None
     while image is None:
-        image = cv2.imread("/home/jienan/Desktop/dog_following_line/image_copy.png")
+        image = cv2.imread("/home/jienan/Desktop/dog_following_line/image_2.png")
         image = cv2.resize(image, (1280, 1024))
         if image is None:
             print("图片读取失败,请检查图片路径")
@@ -190,8 +190,8 @@ if __name__ == "__main__":
 
     # cv2.imshow("image", image)
     cv2.imshow("line_image", line_follower.line_image)
-    # cv2.imshow("LAB_mask", line_follower.mask)
-    # cv2.imshow("lab", line_follower.lab)
+    cv2.imshow("LAB_mask", line_follower.mask)
+    cv2.imshow("lab", line_follower.lab)
     # cv2.imshow("edges", line_follower.edges)
     # # cv2.imshow("eroded", line_follower.eroded)
     # cv2.imshow("dilated", line_follower.dilated)    
